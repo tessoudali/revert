@@ -1,4 +1,4 @@
-FROM node:alpine AS BUILD_IMAGE
+FROM node:23.11.1-alpine3.21 AS BUILD_IMAGE
 WORKDIR /app/
 
 COPY ./fern/ /app/fern/
@@ -61,7 +61,7 @@ RUN yarn workspace @revertdotdev/backend build
 # remove development dependencies
 RUN npm prune --production
 
-FROM node:alpine as RUNTIME_IMAGE
+FROM node:23.11.1-alpine3.21 as RUNTIME_IMAGE
 WORKDIR /app/
 
 #copy from build image
